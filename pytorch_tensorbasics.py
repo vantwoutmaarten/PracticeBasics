@@ -116,12 +116,61 @@ x = torch.tensor([1,0,1,1,1], dtype=torch.bool)
 z = torch.any(x) #checks if at least one is true
 z = torch.all(x) #checks if all are true
 
+#====================================================================#
+#                          Tensor Indexing                           #
+#====================================================================#
 
+batch_size = 10
+features = 25
+x = torch.rand((batch_size, features))
 
+print(x[0])
 
+print(x[:,0])
 
+print(x[2,0:10])
 
+#more advanced indexing
+x = torch.arange(10)
+print(x[(x < 2) | (x > 8)])
+print(x[x.remainder(2) == 0])
 
+# Useful operations
+print(torch.where(x>5, x, x*2))
+print(torch.tensor([0,0,1,2,2,3,4]).unique())
+print(x.ndimension())
+print(x.numel()) # Count the number of elements in x
 
+#====================================================================#
+#                          Tensor Reshaping                          #
+#====================================================================#
 
+x = torch.arange(9)
+x_3x3 = x.view(3,3)
+print(x_3x3)
+x_3x3 = x.reshape(3,3) #Shape will always work, but there can be performance loss compared to view. (solution is contiguous().view() instead of reshape) 
 
+print(x_3x3)
+
+y = x_3x3.t()
+print(y)
+
+x1 = torch.rand(2,5)
+x2 = torch.rand(2,5)
+
+print(torch.cat((x1,x2), dim=0).shape) # concatenates them below eachother to 4x5
+print(torch.cat((x1,x2), dim=1).shape) # concatenates them next to eachother to 2x10
+
+z = x1.view(-1) #flatten the matrix
+print(z.shape) # 10
+
+batch = 64
+x = torch.rand((batch, 2, 5))
+z = x.view(batch, -1)
+print(z.shape)
+
+z = x.permute(0,2,1) # switching the 2 and the 5 dimension, transpose is a special case of the permute function.
+
+x = torch.arange(10) #[10]
+print(x.unsqueeze(0))
+print(x.unsqueeze(1)) #Squeezing and unsqueezing is needed for adding dimensions
