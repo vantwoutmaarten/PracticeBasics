@@ -108,3 +108,4 @@ def check_accuracy(loader, model):
     model.train() #when you evaluate the model during training then after eval(), train() should be used. 
 check_accuracy(train_loader, model)
 check_accuracy(test_loader, model)
+
