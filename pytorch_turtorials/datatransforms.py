@@ -3,8 +3,6 @@ import torchvision
 from torch.utils.data import Dataset
 import numpy as np
 
-dataset = torchvision.dataset.MNIST(root='./data', transform=torchvision.transforms.ToTensor())
-
 class WineDataSet(Dataset):
 
     def __init__(self, transform=None):

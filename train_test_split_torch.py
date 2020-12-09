@@ -23,8 +23,9 @@ init_dataset = TensorDataset(
     torch.randint(1, (100,1))
 )
 
-print(torch.randn(100, 24).shape)
-print(torch.randint(2, (100,1)).shape)
+# print(torch.randn(100, 24).shape)
+# print(torch.randint(2, (100,1)).shape)
+
 
 lengths = [int(len(init_dataset)*0.8), int(len(init_dataset)*0.2)]
 subsetA, subsetB = random_split(init_dataset, lengths)
@@ -34,13 +35,15 @@ datasetB = MyDataset(subsetB)
 dataloaderA = DataLoader(dataset=datasetA, batch_size=1, shuffle=True)
 dataloaderB = DataLoader(dataset=datasetB, batch_size=1, shuffle=True)
 
+
 dataiter = iter(dataloaderA)
 features, labels = dataiter.next()
-print(type(features))
-print(features.shape)
-print(labels.shape)
+# print(type(features))
+# print(features.shape)
+# print(labels.shape)
 
-print(sum(1 for _ in dataloaderA))
-print(sum(1 for _ in dataloaderB))
+
+# print(sum(1 for _ in dataloaderA))
+# print(sum(1 for _ in dataloaderB))
 
 print("THEEND")

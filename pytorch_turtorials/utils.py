@@ -63,7 +63,7 @@ def line_to_tensor(line):
     for i, letter in enumerate(line):
         tensor[i][0][letter_to_index(letter)] = 1
         return tensor
-
+# picks a random example out of the data
 def random_training_example(category_lines, all_categories):
 
     def random_choice(a):
